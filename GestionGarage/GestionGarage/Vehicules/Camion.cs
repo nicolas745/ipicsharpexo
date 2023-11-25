@@ -8,10 +8,22 @@ namespace GestionGarage.Vehicules
 {
     internal class Camion : Vehicule
     {
-        public Camion(String nom, Marque marque, Moteur moteur) : base(nom, marque, moteur) { }
+        private int nbEssieu;
+        private int poids;
+        private int volume;
+        public Camion(String nom, Marque marque, Moteur moteur,int nbEssieu, int poids, int volume) : base(nom, marque, moteur) {
+            this.poids = poids;
+            this.volume = volume;
+            this.nbEssieu = nbEssieu;
+        }
         public override void CalculerTaxe()
         {
             throw new NotImplementedException();
+        }
+        public override void Afficher()
+        {
+            Console.WriteLine("fiche camion ");
+            base.Afficher();
         }
     }
 }

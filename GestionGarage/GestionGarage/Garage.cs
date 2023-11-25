@@ -9,12 +9,18 @@ namespace GestionGarage
 {
     internal class Garage
     {
-        private List<Vehicule> vehicules = new List<Vehicule>();
+        private static List<Vehicule> vehicules = new List<Vehicule>();
         public Garage()
         {
         }
+        public void AjouterVehicule(Vehicule vehicule)
+        {
+            vehicules.Add(vehicule);
+        }
+
         public void Afficher()
         {
+            Console.WriteLine("la list de tous les vehicules : ");
             foreach(Vehicule vehicule in vehicules)
             {
                 vehicule.Afficher();
@@ -50,10 +56,6 @@ namespace GestionGarage
                     vehicule.Afficher();
                 }
             }
-        }
-        public void AjouterVehicule(Vehicule vehicule)
-        {
-            vehicules.Add(vehicule);
         }
         public void TrierVehicule()
         {

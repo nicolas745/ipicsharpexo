@@ -8,10 +8,20 @@ namespace GestionGarage.Vehicules
 {
     internal class Moto : Vehicule
     {
-        public Moto(String nom, Marque marque, Moteur moteur) : base(nom, marque, moteur) { }
+        private int Cylindre;
+        public Moto(String nom, Marque marque, Moteur moteur,int Cylindre) : base(nom, marque, moteur) {
+            this.Cylindre = Cylindre;
+        }
         public override void CalculerTaxe()
         {
             throw new NotImplementedException();
+        }
+        public override void Afficher()
+        {
+            Console.WriteLine($"Fiche Moto Cylindre {this.Cylindre}");
+            Console.WriteLine();
+            base.Afficher();
+
         }
     }
 }
