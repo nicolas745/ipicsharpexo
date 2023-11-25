@@ -52,4 +52,3 @@ namespace GestionGarage.menu.menuaddvehicules
         }
     }
 }
-}
