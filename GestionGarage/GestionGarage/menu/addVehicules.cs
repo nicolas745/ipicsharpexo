@@ -16,7 +16,7 @@ namespace GestionGarage.menu
 
         public override void initMenu()
         {
-            Menus.Add(new Back(new Principal()));
+            Classback = new Principal();
             Menus.Add(new addCamion());
             Menus.Add(new addvoiture());
             Menus.Add(new addmoto());

@@ -15,6 +15,8 @@ namespace GestionGarage.menu
         {
             Menus.Add(new AfficheVehicules());
             Menus.Add(new addVehicules());
+            Menus.Add(new selecteVehicule());
+            Menus.Add(new listmarques());
             base.initMenu();
         }
     }

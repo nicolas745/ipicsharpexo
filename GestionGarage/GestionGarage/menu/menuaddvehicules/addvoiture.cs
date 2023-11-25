@@ -35,7 +35,7 @@ namespace GestionGarage.menu.menuaddvehicules
             } while (!int.TryParse(Console.ReadLine(), out idmarque) || idmarque < 0 || idmarque >= Enum.GetValues(typeof(Marque)).Length);
             Marque marque = (Marque)Enum.GetValues(typeof(Marque)).GetValue(idmarque);
             Moteur moteur = new Moteur("nom",TypeMoteur.electrique,1);
-            Menu.Garage.AjouterVehicule(new Voiture(nom,marque , moteur, 0, 0, 0));
+            new Garage().AjouterVehicule(new Voiture(nom,marque , moteur, 0, 0, 0));
             base.execute();
         }
         public override void afficher()

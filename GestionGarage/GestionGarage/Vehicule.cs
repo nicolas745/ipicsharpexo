@@ -17,15 +17,15 @@ namespace GestionGarage
     }
     enum Marque
     {
-        [MarqueName("peugeot")]
+        [MarqueName("Peugeot")]
         peugeot,
-        [MarqueName("renault")]
+        [MarqueName("Renault")]
         renault,
-        [MarqueName("citroen")]
+        [MarqueName("Citroen")]
         citroen,
-        [MarqueName("audi")]
+        [MarqueName("Audi")]
         audi,
-        [MarqueName("ferrari")]
+        [MarqueName("Ferrari")]
         ferrari
     }
     abstract class Vehicule
@@ -37,6 +37,9 @@ namespace GestionGarage
         private Marque marque;
         private List<Option> options = new List<Option>();
         private Moteur moteur;
+
+        public int Id { get => id; set => id = value; }
+
         private string GetEnumDisplayMarqueName(Enum value)
         {
             var fieldInfo = value.GetType().GetField(value.ToString());
@@ -48,11 +51,12 @@ namespace GestionGarage
             this.nom = nom;
             this.marque = marque;
             this.moteur = moteur;
-            this.id = Increment;
+            this.Id = Increment;
             Increment++;
         }
         public void AfficherOptions()
         {
+            Console.WriteLine("List des option:");
             foreach (Option option in options)
             {
                 option.Afficher();
@@ -63,7 +67,7 @@ namespace GestionGarage
             options.Add(option);
         }
         public virtual void Afficher() {
-            Console.WriteLine($"info du Vicule id {id}:");
+            Console.WriteLine($"info du Vicule id {Id}:");
             Console.WriteLine($"nom : {this.nom}");
             Console.WriteLine($"Marque: {GetEnumDisplayMarqueName(this.marque)}");
             this.moteur.Afficher();

@@ -19,13 +19,15 @@ namespace GestionGarage
     }
     enum nameMenu
     {
+        [nameMenu("Supprimer un véhicule")]
+        delvehicules,
         [nameMenu("Ajouter une moto")]
         addMoto,
         [nameMenu("Ajouter une voiture")]
         addVoiture,
         [nameMenu("Ajouter Camion")]
         addCamion,
-        [nameMenu("Ajouter un vihecule")]
+        [nameMenu("Ajouter un véhicule")]
         addvehicules,
         [nameMenu("Afficher les véhicules")]
         Affichevehicules,
@@ -34,10 +36,19 @@ namespace GestionGarage
         [nameMenu("Quitter l'application")]
         exit,
         [nameMenu("Principal")]
-        principal
+        principal,
+        [nameMenu("Sélectionner un véhicule")]
+        selectvehicules,
+        [nameMenu("Afficher les options")]
+        afficheoption,
+        [nameMenu("Ajouter des options")]
+        addoption,
+        [nameMenu("Afficher les marques")]
+        listmarques
     }
     internal class Menu
     {
+        private Menu classback = null;
         public virtual bool isClear()
         {
             return true;
@@ -46,6 +57,46 @@ namespace GestionGarage
         {
             return true;
         }
+        public void start()
+        {
+            Menu menu = this;
+            while (true)
+            {
+                try
+                {
+                    menu.execute();
+                    menu.initMenu();
+                    menu.afficher();
+                    Menu lastmenu = menu;
+                    menu = menu.GetChoixMenu(menu);
+                    if (lastmenu.isClear())
+                    {
+                        Console.Clear();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+        private String GetChoix()
+        {
+
+            String res = Console.ReadLine();
+            if ((res != "b" && res != "x"))
+            {
+                if (!int.TryParse(res, out int intValue))
+                {
+                    throw new SelectMenuNotInt();
+                }
+                if (0 > intValue | intValue >= menus.Count)
+                {
+                    throw new SelectMenuException(menus.Count - 1);
+                }
+            }
+            return res;
+        }
         private string GetEnumDisplayMenuName(Enum value)
         {
             var fieldInfo = value.GetType().GetField(value.ToString());
@@ -53,43 +104,58 @@ namespace GestionGarage
 
             return attribut?.Value ?? value.ToString();
         }
-        private static Garage garage = new Garage();
         private nameMenu name;
         private List<Menu> menus = new List<Menu>();
         public Menu() {
         }
         public virtual void initMenu()
-        {
-            Menus.Add(new Exit());
-        }
-        public void choix()
-        {
-
-        }
+        {}
         internal List<Menu> Menus { get => menus; set => menus = value; }
         internal nameMenu Name { get => name; set => name = value; }
-        internal static Garage Garage { get => garage; set => garage = value; }
+        internal Menu Classback { get => classback; set => classback = value; }
 
         public virtual void afficher() {
             Console.WriteLine("List des Option Menu:");
+            if(Classback != null)
+            {
+                Console.WriteLine("b : " + GetEnumDisplayMenuName(new Back(Classback).name));
+            }
             for(int i=0; i<menus.Count();i++)
             {
                 Console.WriteLine(i+ " : "+ GetEnumDisplayMenuName(menus[i].name));
             }
+            Console.WriteLine("x : " + GetEnumDisplayMenuName(new Exit().name));
         }
         public virtual void execute() {}
-        public virtual Menu selectMenu(String nbString)
+        public Menu GetChoixMenu(Menu menu)
         {
-            if (! int.TryParse(nbString, out int intValue))
+            String selectuser = "0";
+            if (menu.isselect())
             {
-                throw new SelectMenuNotInt();
+                selectuser = GetChoix();
             }
-            if (0> intValue | intValue >= menus.Count)
+            Menu res = null;
+            switch (selectuser)
             {
-                throw new SelectMenuException(menus.Count-1);
+                case "b":
+                    if (Classback != null)
+                    {
+                        res = new Back(Classback);
+                    }
+                    else
+                    {
+                        res = new Back(this);
+                    }
+                    break;
+                case "x":
+                    res = new Exit();
+                    break;
+                default:
+                    res=  Menus[int.Parse(selectuser)];
+                    break;
             }
-
-            return Menus[intValue];
+            return res;
+            
         }
     }
 }

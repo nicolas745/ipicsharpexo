@@ -6,30 +6,28 @@ using System.Threading.Tasks;
 
 namespace GestionGarage.menu
 {
-    internal class AfficheVehicules:Menu
+    internal class listmarques:Menu
     {
-        public AfficheVehicules():base() {
-            Name = nameMenu.Affichevehicules;
+        public listmarques():base() {
+            Name = nameMenu.listmarques;
         }
-
+        public override bool isClear()
+        {
+            return false;
+        }
         public override void initMenu()
         {
             Menus.Add(new Principal());
             base.initMenu();
         }
-        public override void execute()
-        {
-            base.execute();
-        }
         public override void afficher()
         {
-            new Garage().Afficher();
+            foreach (Marque suit in (Marque[])Enum.GetValues(typeof(Marque)))
+            {
+                Console.WriteLine(suit);
+            }
         }
         public override bool isselect()
-        {
-            return false;
-        }
-        public override bool isClear()
         {
             return false;
         }
