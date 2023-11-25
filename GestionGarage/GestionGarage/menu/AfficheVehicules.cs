@@ -8,7 +8,6 @@ namespace GestionGarage.menu
 {
     internal class AfficheVehicules:Menu
     {
-        private Garage garage = new Garage();
         public AfficheVehicules():base() {
             Name = nameMenu.Affichevehicules;
         }
@@ -24,7 +23,7 @@ namespace GestionGarage.menu
         }
         public override void afficher()
         {
-            garage.Afficher();
+            Menu.Garage.Afficher();
         }
         public override bool isselect()
         {

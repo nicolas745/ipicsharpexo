@@ -1,4 +1,5 @@
-﻿using GestionGarage.Vehicules;
+﻿using GestionGarage.menu.menuaddvehicules;
+using GestionGarage.Vehicules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +16,11 @@ namespace GestionGarage.menu
 
         public override void initMenu()
         {
-            Back back = new Back(new Principal());
-            Menus.Add(back);
+            Menus.Add(new Back(new Principal()));
+            Menus.Add(new addCamion());
+            Menus.Add(new addvoiture());
+            Menus.Add(new addmoto());
             base.initMenu();
-        }
-        public override void execute()
-        {
-            Garage garage = new Garage();
-            base.execute();
         }
     }
 }

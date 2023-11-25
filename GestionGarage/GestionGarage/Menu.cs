@@ -19,13 +19,19 @@ namespace GestionGarage
     }
     enum nameMenu
     {
+        [nameMenu("Ajouter une moto")]
+        addMoto,
+        [nameMenu("Ajouter une voiture")]
+        addVoiture,
+        [nameMenu("Ajouter Camion")]
+        addCamion,
         [nameMenu("Ajouter un vihecule")]
         addvehicules,
         [nameMenu("Afficher les véhicules")]
         Affichevehicules,
         [nameMenu("retour")]
         back,
-        [nameMenu("Exit")]
+        [nameMenu("Quitter l'application")]
         exit,
         [nameMenu("Principal")]
         principal
@@ -47,6 +53,7 @@ namespace GestionGarage
 
             return attribut?.Value ?? value.ToString();
         }
+        private static Garage garage = new Garage();
         private nameMenu name;
         private List<Menu> menus = new List<Menu>();
         public Menu() {
@@ -61,6 +68,7 @@ namespace GestionGarage
         }
         internal List<Menu> Menus { get => menus; set => menus = value; }
         internal nameMenu Name { get => name; set => name = value; }
+        internal static Garage Garage { get => garage; set => garage = value; }
 
         public virtual void afficher() {
             Console.WriteLine("List des Option Menu:");
