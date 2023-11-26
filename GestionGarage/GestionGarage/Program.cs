@@ -15,7 +15,9 @@ namespace GestionGarage
             Garage garage = new Garage();
             Moteur moteur1 = new Moteur("M2P", TypeMoteur.essence, 1);
             Moteur moteur2 = new Moteur("K12", TypeMoteur.diesel, 1);
-
+            Options options = new Options();
+            options.AddOption(new Option(10,"option 1"));
+            options.AddOption(new Option(123, "option 2"));
             garage.AjouterVehicule(new Voiture("C3", Marque.audi, moteur1, 1, 3, 10));
             garage.AjouterVehicule(new Camion("Truck",Marque.peugeot,moteur2,1,100,200));
             garage.AjouterVehicule(new Moto("Moto k12", Marque.peugeot, moteur1,2));

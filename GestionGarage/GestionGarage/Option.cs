@@ -12,12 +12,21 @@ namespace GestionGarage
         private int id;
         private String nom;
         private decimal prix;
-        public Option() { }
+        public Option(decimal prix,String nom) {
+            Id = increment;
+            this.nom = nom;
+            this.prix = prix;
+            increment++;
+        }
+
+        public string Nom { get => nom; set => nom = value; }
+        public int Id { get => id; set => id = value; }
+
         public void Afficher()
         {
             Console.WriteLine(
-                $"Option id{id}\n" +
-                $"   Nom: {nom}\n" +
+                $"Option id{Id}\n" +
+                $"   Nom: {Nom}\n" +
                 $"   Prix: {prix}"
             );
         }

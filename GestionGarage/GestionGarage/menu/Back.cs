@@ -8,11 +8,16 @@ namespace GestionGarage.menu
 {
     internal class Back:Menu
     {
+        private Menu backmenu;
         public Back(Menu backmenu):base() {
-            Menus.Add(backmenu);
+            this.backmenu = backmenu;
             Name = nameMenu.back;
         }
-
+        public override void initMenu()
+        {
+            base.initMenu();
+            Menus.Add(backmenu);
+        }
         public override bool isselect()
         {
             return false;

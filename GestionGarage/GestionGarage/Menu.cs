@@ -3,6 +3,8 @@ using GestionGarage.myexception;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -43,8 +45,12 @@ namespace GestionGarage
         afficheoption,
         [nameMenu("Ajouter des options")]
         addoption,
+        [nameMenu("Afficher les types de moteurs")]
+        listmoteur,
         [nameMenu("Afficher les marques")]
-        listmarques
+        listmarques,
+        [nameMenu("Supprimer une option")]
+        delOption,
     }
     internal class Menu
     {
@@ -68,7 +74,7 @@ namespace GestionGarage
                     menu.initMenu();
                     menu.afficher();
                     Menu lastmenu = menu;
-                    menu = menu.GetChoixMenu(menu);
+                    menu.GetChoixMenu(ref menu);
                     if (lastmenu.isClear())
                     {
                         Console.Clear();
@@ -109,13 +115,15 @@ namespace GestionGarage
         public Menu() {
         }
         public virtual void initMenu()
-        {}
+        {
+            Menus = new List<Menu>();
+        }
         internal List<Menu> Menus { get => menus; set => menus = value; }
         internal nameMenu Name { get => name; set => name = value; }
         internal Menu Classback { get => classback; set => classback = value; }
 
         public virtual void afficher() {
-            Console.WriteLine("List des Option Menu:");
+            Console.WriteLine(" Menu:");
             if(Classback != null)
             {
                 Console.WriteLine("b : " + GetEnumDisplayMenuName(new Back(Classback).name));
@@ -127,35 +135,32 @@ namespace GestionGarage
             Console.WriteLine("x : " + GetEnumDisplayMenuName(new Exit().name));
         }
         public virtual void execute() {}
-        public Menu GetChoixMenu(Menu menu)
+        public void GetChoixMenu(ref Menu menu)
         {
             String selectuser = "0";
             if (menu.isselect())
             {
                 selectuser = GetChoix();
             }
-            Menu res = null;
             switch (selectuser)
             {
                 case "b":
                     if (Classback != null)
                     {
-                        res = new Back(Classback);
+                        menu = new Back(Classback);
                     }
                     else
                     {
-                        res = new Back(this);
+                        menu = new Back(this);
                     }
                     break;
                 case "x":
-                    res = new Exit();
+                    menu = new Exit();
                     break;
                 default:
-                    res=  Menus[int.Parse(selectuser)];
+                    menu=  Menus[int.Parse(selectuser)];
                     break;
             }
-            return res;
-            
         }
     }
 }

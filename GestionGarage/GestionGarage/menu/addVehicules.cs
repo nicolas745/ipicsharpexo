@@ -16,11 +16,11 @@ namespace GestionGarage.menu
 
         public override void initMenu()
         {
+            base.initMenu();
             Classback = new Principal();
             Menus.Add(new addCamion());
             Menus.Add(new addvoiture());
             Menus.Add(new addmoto());
-            base.initMenu();
         }
     }
 }

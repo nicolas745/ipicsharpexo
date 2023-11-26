@@ -15,8 +15,8 @@ namespace GestionGarage.menu.menuaddvehicules
         }
         public override void initMenu()
         {
-            Menus.Add(new addVehicules());
             base.initMenu();
+            Menus.Add(new addVehicules());
         }
         public override void execute()
         {

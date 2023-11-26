@@ -13,9 +13,17 @@ namespace GestionGarage.menu
         public selecteVehicule():base() {
             Name = nameMenu.selectvehicules;
         }
+        public selecteVehicule(int id)
+        {
+            idvehicule=id;
+        }
         private bool res = true;
         public override void execute()
         {
+            if (idvehicule!=-1)
+            {
+                return;
+            }
             if(Garage.Vehicules.Count()==0)
             {
                 Console.WriteLine("il n'y a pas de voiture");
@@ -26,7 +34,6 @@ namespace GestionGarage.menu
             {
                 Console.WriteLine("Entrez le id vehicules :");
             } while (int.TryParse(Console.ReadLine(), out idvehicule) && (!new Garage().isexitevehicule(idvehicule)));
-            new Garage().getvehiculeid(idvehicule).Afficher();
 
             base.execute();
         }
@@ -43,11 +50,12 @@ namespace GestionGarage.menu
         }
         public override void initMenu()
         {
+            base.initMenu();
             Classback = new Principal();
             Menus.Add(new delVehicules(idvehicule));
             Menus.Add(new afficheoption(idvehicule));
             Menus.Add(new addoption(idvehicule));
-            base.initMenu();
+            Menus.Add(new delOption(idvehicule));
         }
         public override bool isselect()
         {

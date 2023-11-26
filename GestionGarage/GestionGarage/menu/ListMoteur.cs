@@ -6,31 +6,25 @@ using System.Threading.Tasks;
 
 namespace GestionGarage.menu
 {
-    internal class AfficheVehicules:Menu
+    internal class ListMoteur:Menu
     {
-        public AfficheVehicules():base() {
-            Name = nameMenu.Affichevehicules;
+        public ListMoteur() {
+            Name = nameMenu.listmoteur;
         }
-
         public override void initMenu()
         {
-
             base.initMenu();
             Menus.Add(new Principal());
         }
-        public override void execute()
-        {
-            base.execute();
-        }
         public override void afficher()
         {
-            new Garage().Afficher();
+            new Moteurs().Afficher();
         }
-        public override bool isselect()
+        public override bool isClear()
         {
             return false;
         }
-        public override bool isClear()
+        public override bool isselect()
         {
             return false;
         }

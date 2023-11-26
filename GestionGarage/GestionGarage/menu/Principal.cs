@@ -13,11 +13,13 @@ namespace GestionGarage.menu
         }
         public override void initMenu()
         {
+            base.initMenu();
             Menus.Add(new AfficheVehicules());
             Menus.Add(new addVehicules());
             Menus.Add(new selecteVehicule());
+            Menus.Add(new Listoption());
             Menus.Add(new listmarques());
-            base.initMenu();
+            Menus.Add(new ListMoteur());
         }
     }
 }

@@ -50,8 +50,11 @@
     <Compile Include="menu\AfficheVehicules.cs" />
     <Compile Include="menu\Back.cs" />
     <Compile Include="menu\listmarques.cs" />
+    <Compile Include="menu\ListMoteur.cs" />
+    <Compile Include="menu\Listoption.cs" />
     <Compile Include="menu\menuselecteVehicules\addoption.cs" />
     <Compile Include="menu\menuselecteVehicules\afficheoption.cs" />
+    <Compile Include="menu\menuselecteVehicules\delOption.cs" />
     <Compile Include="menu\menuselecteVehicules\delVehicules.cs" />
     <Compile Include="menu\Exit.cs" />
     <Compile Include="menu\menuaddvehicules\addCamion.cs" />
@@ -60,9 +63,11 @@
     <Compile Include="menu\Principal.cs" />
     <Compile Include="menu\selecteVehicule.cs" />
     <Compile Include="Moteur.cs" />
+    <Compile Include="Moteurs.cs" />
     <Compile Include="myexception\SelectMenuException.cs" />
     <Compile Include="myexception\SelectMenuNotInt.cs" />
     <Compile Include="Option.cs" />
+    <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vehicules\Camion.cs" />

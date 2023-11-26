@@ -17,8 +17,9 @@ namespace GestionGarage.menu
         }
         public override void initMenu()
         {
-            Menus.Add(new Principal());
+
             base.initMenu();
+            Menus.Add(new Principal());
         }
         public override void afficher()
         {

@@ -39,6 +39,7 @@ namespace GestionGarage
         private Moteur moteur;
 
         public int Id { get => id; set => id = value; }
+        internal List<Option> Options { get => options; set => options = value; }
 
         private string GetEnumDisplayMarqueName(Enum value)
         {
@@ -57,14 +58,14 @@ namespace GestionGarage
         public void AfficherOptions()
         {
             Console.WriteLine("List des option:");
-            foreach (Option option in options)
+            foreach (Option option in Options)
             {
                 option.Afficher();
             }
         }
         public void AjouterOption(Option option)
         {
-            options.Add(option);
+            Options.Add(option);
         }
         public virtual void Afficher() {
             Console.WriteLine($"info du Vicule id {Id}:");

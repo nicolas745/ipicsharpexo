@@ -18,7 +18,11 @@ namespace GestionGarage.menu.menuselecteVehicules
         {
             return false;
         }
-
+        public override void initMenu()
+        {
+            base.initMenu();
+            Menus.Add(new selecteVehicule(id));
+        }
         public override void afficher()
         {
             new Garage().getvehiculeid(this.id).AfficherOptions();
