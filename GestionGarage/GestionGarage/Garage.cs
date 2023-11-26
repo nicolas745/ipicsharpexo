@@ -16,6 +16,10 @@ namespace GestionGarage
         public Garage()
         {
         }
+        public void init()
+        {
+            vehicules = new List<Vehicule>();
+        }
         public Vehicule getvehiculeid(int id)
         {
             foreach(Vehicule vehicule in Vehicules)

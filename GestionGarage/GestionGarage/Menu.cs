@@ -21,6 +21,8 @@ namespace GestionGarage
     }
     enum nameMenu
     {
+        [nameMenu("Charger le garage ")]
+        chargedata,
         [nameMenu("Supprimer un véhicule")]
         delvehicules,
         [nameMenu("Ajouter une moto")]
