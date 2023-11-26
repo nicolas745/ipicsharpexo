@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace GestionGarage.myexception
 {
-    internal class SelectMenuNotInt: Exception
+    internal class notvoitureException : Exception
     {
-        public SelectMenuNotInt() {
-            Console.WriteLine("error, ce n'est pas un nombre");
+        public notvoitureException() {
+            Console.WriteLine($"il y a pas de voiture");
         }
     }
 }

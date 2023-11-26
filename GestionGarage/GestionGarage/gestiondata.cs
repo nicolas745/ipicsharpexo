@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml;
 using Newtonsoft.Json;
 namespace GestionGarage
 {
@@ -21,6 +20,18 @@ namespace GestionGarage
             {
                 data = LoadDataFromJsonFile();
             }
+        }
+        public void initVehicules()
+        {
+            data["vehicule"].Clear();
+        }
+        public void save()
+        {
+            CreateJsonFile(data);
+        }
+        public void addVehicules(Dictionary<String,String> vehiculedata)
+        {
+            data["vehicule"].Add(vehiculedata);
         }
         private Dictionary<String, List<Dictionary<String, String>>> LoadDataFromJsonFile()
         {

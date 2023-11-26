@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionGarage.myexception;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,10 @@ namespace GestionGarage.menu.menuselecteVehicules
             String res = Console.ReadLine();
             if(int.TryParse(res, out int idres))
             {
+                if(idres <0 ||  idres >= Options.Listoption.Count())
+                {
+                    throw new selectoptionException();
+                }
                 Garage.Vehicules[id].AjouterOption(Options.Listoption[idres]);
             }
             base.execute();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionGarage.menu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,8 @@ namespace GestionGarage
 
         public int Id { get => id; set => id = value; }
         internal List<Option> Options { get => options; set => options = value; }
+        public string Nom { get => nom; set => nom = value; }
+        internal Moteur Moteur { get => moteur; set => moteur = value; }
 
         private string GetEnumDisplayMarqueName(Enum value)
         {
@@ -49,10 +52,11 @@ namespace GestionGarage
             return attribut?.Value ?? value.ToString();
         }
         public Vehicule(String nom, Marque marque, Moteur moteur) {
-            this.nom = nom;
+            this.Nom = nom;
             this.marque = marque;
-            this.moteur = moteur;
+            this.Moteur = moteur;
             this.Id = Increment;
+            Console.WriteLine(Increment);
             Increment++;
         }
         public void AfficherOptions()
@@ -63,18 +67,30 @@ namespace GestionGarage
                 option.Afficher();
             }
         }
+        public int getidmarque()
+        {
+            Marque[] listmarque = (Marque[])Enum.GetValues(typeof(Marque));
+            for(int i = 0; i < listmarque.Count(); i++)
+            {
+                if (listmarque[i]==marque)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
         public void AjouterOption(Option option)
         {
             Options.Add(option);
         }
         public virtual void Afficher() {
             Console.WriteLine($"info du Vicule id {Id}:");
-            Console.WriteLine($"nom : {this.nom}");
+            Console.WriteLine($"nom : {this.Nom}");
             Console.WriteLine($"Marque: {GetEnumDisplayMarqueName(this.marque)}");
-            this.moteur.Afficher();
+            this.Moteur.Afficher();
             this.AfficherOptions();
         }
-
+        public abstract Dictionary<String,String> data();
         public abstract void CalculerTaxe();
         public decimal PrixTotal()
         {

@@ -29,11 +29,14 @@ namespace GestionGarage
     }
     internal class Moteur
     {
-        private static int increlent= 0;
+        private static int increment= 0;
         private int id;
         private String nom;
         private TypeMoteur typeMoteur;
         private int puissance;
+
+        public int Id { get => id; set => id = value; }
+
         private string GetEnumDisplayMoteurName(Enum value)
         {
             var fieldInfo = value.GetType().GetField(value.ToString());
@@ -43,9 +46,11 @@ namespace GestionGarage
         }
         public Moteur(string nom, TypeMoteur typeMoteur, int puissance)
         {
+            Id = increment;
             this.nom = nom;
             this.typeMoteur = typeMoteur;
             this.puissance = puissance;
+            increment++;
         }
         public void Afficher()
         {

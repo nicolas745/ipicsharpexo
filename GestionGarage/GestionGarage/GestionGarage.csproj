@@ -66,11 +66,14 @@
     <Compile Include="menu\menuaddvehicules\addmoto.cs" />
     <Compile Include="menu\menuaddvehicules\addvoiture.cs" />
     <Compile Include="menu\Principal.cs" />
+    <Compile Include="menu\save.cs" />
     <Compile Include="menu\selecteVehicule.cs" />
     <Compile Include="Moteur.cs" />
     <Compile Include="Moteurs.cs" />
+    <Compile Include="myexception\selectoptionException.cs" />
+    <Compile Include="myexception\notvoitureException.cs" />
     <Compile Include="myexception\SelectMenuException.cs" />
-    <Compile Include="myexception\SelectMenuNotInt.cs" />
+    <Compile Include="myexception\SelectMenuNotIntException.cs" />
     <Compile Include="Option.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />

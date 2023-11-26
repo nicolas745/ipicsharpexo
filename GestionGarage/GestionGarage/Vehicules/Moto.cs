@@ -23,5 +23,15 @@ namespace GestionGarage.Vehicules
             base.Afficher();
 
         }
+        public override Dictionary<string, string> data()
+        {
+            Dictionary<String,String> senddata = new Dictionary<String,String>();
+            senddata.Add("type", "moto");
+            senddata.Add("name", Nom);
+            senddata.Add("marque", getidmarque().ToString());
+            senddata.Add("moteur",Moteur.Id.ToString());
+            senddata.Add("Cylindre",Cylindre.ToString());
+            return senddata;
+        }
     }
 }

@@ -25,5 +25,17 @@ namespace GestionGarage.Vehicules
             Console.WriteLine("fiche camion ");
             base.Afficher();
         }
+        public override Dictionary<string, string> data()
+        {
+            Dictionary<String, String> senddata = new Dictionary<string, string>();
+            senddata.Add("type", "camion");
+            senddata.Add("name", Nom);
+            senddata.Add("marque", getidmarque().ToString());
+            senddata.Add("moteur", Moteur.Id.ToString());
+            senddata.Add("nbEssieu", nbEssieu.ToString());
+            senddata.Add("poids", poids.ToString());
+            senddata.Add("volume", volume.ToString());
+            return senddata;
+        }
     }
 }

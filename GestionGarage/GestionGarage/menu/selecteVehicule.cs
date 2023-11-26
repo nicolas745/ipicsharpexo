@@ -26,8 +26,6 @@ namespace GestionGarage.menu
             }
             if(Garage.Vehicules.Count()==0)
             {
-                Console.WriteLine("il n'y a pas de voiture");
-                res = false;
                 return;
             }
             do

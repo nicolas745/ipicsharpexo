@@ -20,6 +20,8 @@ namespace GestionGarage.menu
             Menus.Add(new Listoption());
             Menus.Add(new listmarques());
             Menus.Add(new ListMoteur());
+            Menus.Add(new chargedata());
+            Menus.Add(new save());
         }
     }
 }

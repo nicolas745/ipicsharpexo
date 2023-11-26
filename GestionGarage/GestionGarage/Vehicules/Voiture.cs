@@ -29,5 +29,17 @@ namespace GestionGarage.Vehicules
             Console.WriteLine($"fiche Voiture {this.cheveaufiscaut} chevaux fiscaux   avec {this.nbporte} porte et {this.tailleCoffre} volume de couffre:");
             base.Afficher();
         }
+        public override Dictionary<string, string> data()
+        {
+            Dictionary<String,string> senddata = new Dictionary<String,string>();
+            senddata.Add("type", "voiture");
+            senddata.Add("name", Nom);
+            senddata.Add("marque", getidmarque().ToString());
+            senddata.Add("Moteur",this.Moteur.Id.ToString());
+            senddata.Add("cheveaufiscaut",cheveaufiscaut.ToString());
+            senddata.Add("nbporte", nbporte.ToString());
+            senddata.Add("tailleCoffre", tailleCoffre.ToString());
+            return senddata;
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace GestionGarage
         }
         public void init()
         {
-            vehicules = new List<Vehicule>();
+            vehicules.Clear();
         }
         public Vehicule getvehiculeid(int id)
         {

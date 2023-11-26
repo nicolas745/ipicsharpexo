@@ -53,6 +53,8 @@ namespace GestionGarage
         listmarques,
         [nameMenu("Supprimer une option")]
         delOption,
+        [nameMenu("Sauvegarder le garage ")]
+        save
     }
     internal class Menu
     {
@@ -96,7 +98,7 @@ namespace GestionGarage
             {
                 if (!int.TryParse(res, out int intValue))
                 {
-                    throw new SelectMenuNotInt();
+                    throw new SelectMenuNotIntException();
                 }
                 if (0 > intValue | intValue >= menus.Count)
                 {
