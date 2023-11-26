@@ -53,6 +53,7 @@
     <Compile Include="menu\addVehicules.cs" />
     <Compile Include="menu\AfficheVehicules.cs" />
     <Compile Include="menu\Back.cs" />
+    <Compile Include="menu\chargedata.cs" />
     <Compile Include="menu\listmarques.cs" />
     <Compile Include="menu\ListMoteur.cs" />
     <Compile Include="menu\Listoption.cs" />
